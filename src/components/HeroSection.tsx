@@ -65,7 +65,7 @@ const HeroSection = () => {
               <div className="w-full h-full max-w-md mx-auto">
                 <div className="relative z-10 animate-float">
                   <img 
-                    src="https://i.imgur.com/FaTnTJa.png" 
+                    src="E:\nep-saarthi\images\Natinal-Education-Policy-2020-1170x720.png"
                     alt="NEP 2020 Illustration" 
                     className="w-full h-auto rounded-lg shadow-2xl"
                   />
