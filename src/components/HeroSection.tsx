@@ -1,7 +1,15 @@
 
-import React, { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+
 import { ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { RegistrationForm } from './RegistrationForm';
+
 
 const HeroSection = () => {
   useEffect(() => {
@@ -41,9 +49,18 @@ const HeroSection = () => {
                 Explore Features
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" size="lg" className="border-nep-orange text-nep-orange hover:bg-nep-orange hover:text-white">
-                Visit Helpdesk
-              </Button>
+              <div className="hidden md:flex space-x-4">
+                          <Sheet>
+                            <SheetTrigger asChild>
+                              <Button className="bg-nep-orange hover:bg-nep-orange-dark text-white">
+                                Register Now
+                              </Button>
+                            </SheetTrigger>
+                            <SheetContent side="right" className="w-full sm:max-w-2xl overflow-y-auto">
+                              <RegistrationForm />
+                            </SheetContent>
+                          </Sheet>
+                        </div>
             </div>
             
             <div className="mt-8 flex items-center gap-2">
