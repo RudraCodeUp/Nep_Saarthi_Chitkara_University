@@ -39,8 +39,11 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-1/2 reveal">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-              Welcome to <span className="text-gradient">NEP Saarthi</span>
+              Welcome to <span className="text-gradient">NEP SAARTHI's</span><br></br>
+      
             </h1>
+            <h3><span className="text-lg md:text-xl mb-8 text-blue-700">( National Education Policy Student Ambassadors for Academic Reforms, Transformation, and Holistic Inclusive Success. )</span></h3>
+           <br></br>
             <p className="text-lg md:text-xl mb-8 text-gray-700">
               Empowering education transformation through the National Education Policy 2020 at Chitkara University.
             </p>

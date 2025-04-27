@@ -24,7 +24,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Location</h4>
-                    <p className="text-gray-600">Student Success Center, Main Academic Block, Chitkara University, Punjab</p>
+                    <p className="text-gray-600">Bloom Block, Department of Academic Affairs, Chitkara University, Punjab</p>
                   </div>
                 </div>
                 
@@ -36,7 +36,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Helpdesk Hours</h4>
-                    <p className="text-gray-600">Monday to Friday: 9:00 AM - 5:00 PM</p>
+                    <p className="text-gray-600">Monday to Friday: 9:00 AM - 4:00 PM</p>
                     <p className="text-gray-600">Saturday: 9:00 AM - 1:00 PM</p>
                   </div>
                 </div>
@@ -49,8 +49,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Contact</h4>
-                    <p className="text-gray-600">Email: nep.saarthi@chitkara.edu.in</p>
-                    <p className="text-gray-600">Phone: +91 123 456 7890</p>
+                    <p className="text-gray-600">Email: nepsaarthi@chitkara.edu.in</p>
                   </div>
                 </div>
               </div>

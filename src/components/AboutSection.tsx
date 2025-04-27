@@ -10,13 +10,13 @@ const AboutSection = () => {
           <div className="lg:w-1/2 order-2 lg:order-1 reveal">
             <h2 className="section-title">About NEP Saarthi</h2>
             <p className="mb-4 text-gray-700">
-              NEP Saarthi at Chitkara University is a student-led initiative dedicated to promoting awareness and understanding of the National Education Policy 2020, its benefits, and implementation.
+            NEP Saarthi at Chitkara University is a student-driven initiative dedicated to promoting awareness, understanding, and implementation of the National Education Policy (NEP) 2020 among the student community.
             </p>
             <p className="mb-4 text-gray-700">
-              Our team of passionate volunteers works closely with faculty and administration to organize workshops, seminars, and helpdesk sessions that assist students in navigating the changes brought by NEP 2020.
+            Our team of NEP Saarthis, selected through a national-level process by the University Grants Commission (UGC), collaborates with faculty and administration to organize workshops, seminars, awareness drives, and helpdesk sessions that guide students in adapting to the academic reforms introduced by NEP 2020.
             </p>
             <p className="mb-6 text-gray-700">
-              Through our efforts, we aim to build a community of informed individuals who can fully leverage the opportunities presented by this transformative education policy.
+            Through our collective efforts, we strive to create a well-informed campus community that embraces multidisciplinary learning, holistic education, skill development, and research excellence, shaping the future of education in alignment with the vision of NEP 2020.
             </p>
             <div className="flex gap-4 flex-wrap">
               <Button className="bg-nep-purple hover:bg-nep-purple-dark text-white">
@@ -44,11 +44,11 @@ const AboutSection = () => {
                   </h3>
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div className="p-2">
-                      <p className="text-2xl font-bold text-nep-blue">500+</p>
+                      <p className="text-2xl font-bold text-nep-blue"> 500+</p>
                       <p className="text-sm text-gray-600">Students Engaged</p>
                     </div>
                     <div className="p-2">
-                      <p className="text-2xl font-bold text-nep-orange">20+</p>
+                      <p className="text-2xl font-bold text-nep-orange">10+</p>
                       <p className="text-sm text-gray-600">Events Held</p>
                     </div>
                     <div className="p-2">
