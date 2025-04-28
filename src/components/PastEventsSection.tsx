@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 
 // Custom autoplay plugin for Embla Carousel
-const AutoPlayPlugin = (interval = 3000) => {
+const AutoPlayPlugin = (interval = 1000) => {
   let timer: ReturnType<typeof setInterval> | undefined;
 
   return {
@@ -47,42 +47,42 @@ const PastEventsSection = () => {
       title: "Bhartiya Bhasha Utsav",
       date: "March 15, 2024",
       image: "/images/WhatsApp Image 2025-02-24 at 07.24.23_a7b59ea8.jpg",
-      description: "Successful transition to our new campus location"
+      description: "Successful conduct of event"
     },
     {
       id: 2,
       title: "Moving Celebration",
       date: "March 16, 2024",
       image: "/images/WhatsApp Image 2025-04-27 at 13.33.21_d705e538.jpg",
-      description: "Celebrating our first day in the new campus"
+      description: "Successful conduct of event"
     },
     {
       id: 3,
       title: "New Campus Tour",
       date: "March 17, 2024",
       image: "/images/WhatsApp Image 2025-02-28 at 12.03.35_39d95c95.jpg",
-      description: "Guided tour of our new facilities"
+      description: "Successful conduct of event"
     },
     {
       id: 4,
       title: "New Campus Tour",
       date: "March 17, 2024",
       image: "/images/WhatsApp Image 2025-02-28 at 12.03.34_761bafa0.jpg",
-      description: "Guided tour of our new facilities"
+      description: "Successful conduct of event"
     },
     {
       id: 5,
       title: "New Campus Tour",
       date: "March 17, 2024",
       image: "/images/WhatsApp Image 2025-04-27 at 13.30.27_27d4f065.jpg",
-      description: "Guided tour of our new facilities"
+      description: "Successful conduct of event"
     },
     {
       id: 6,
       title: "New Campus Tour",
       date: "March 17, 2024",
       image: "/images/WhatsApp Image 2025-03-07 at 15.15.48_ae2039e8.jpg",
-      description: "Guided tour of our new facilities"
+      description: "Successful conduct of event"
     }
   ];
 

@@ -48,11 +48,7 @@ const HeroSection = () => {
               Empowering education transformation through the National Education Policy 2020 at Chitkara University.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-nep-blue hover:bg-nep-blue-dark text-white">
-                Explore Features
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
-              <div className="hidden md:flex space-x-4">
+             
                           <Sheet>
                             <SheetTrigger asChild>
                               <Button className="bg-nep-orange hover:bg-nep-orange-dark text-white">
@@ -63,7 +59,6 @@ const HeroSection = () => {
                               <RegistrationForm />
                             </SheetContent>
                           </Sheet>
-                        </div>
             </div>
             
             <div className="mt-8 flex items-center gap-2">
