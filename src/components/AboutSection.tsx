@@ -33,7 +33,7 @@ const AboutSection = () => {
               <div className="bg-white rounded-xl shadow-xl p-4 max-w-md mx-auto">
                 <div className="aspect-video relative overflow-hidden rounded-lg">
                   <img 
-                    src="https://i.imgur.com/y2JnAHr.jpg" 
+                    src="/images/OIP.jpg" 
                     alt="NEP Saarthi Team" 
                     className="w-full h-full object-cover"
                   />

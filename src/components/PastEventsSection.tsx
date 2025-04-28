@@ -44,23 +44,44 @@ const PastEventsSection = () => {
   const events = [
     {
       id: 1,
-      title: "Campus Move Day",
+      title: "Bhartiya Bhasha Utsav",
       date: "March 15, 2024",
-      image: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e",
+      image: "/images/WhatsApp Image 2025-02-24 at 07.24.23_a7b59ea8.jpg",
       description: "Successful transition to our new campus location"
     },
     {
       id: 2,
       title: "Moving Celebration",
       date: "March 16, 2024",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625",
+      image: "/images/WhatsApp Image 2025-04-27 at 13.33.21_d705e538.jpg",
       description: "Celebrating our first day in the new campus"
     },
     {
       id: 3,
       title: "New Campus Tour",
       date: "March 17, 2024",
-      image: "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a",
+      image: "/images/WhatsApp Image 2025-02-28 at 12.03.35_39d95c95.jpg",
+      description: "Guided tour of our new facilities"
+    },
+    {
+      id: 4,
+      title: "New Campus Tour",
+      date: "March 17, 2024",
+      image: "/images/WhatsApp Image 2025-02-28 at 12.03.34_761bafa0.jpg",
+      description: "Guided tour of our new facilities"
+    },
+    {
+      id: 5,
+      title: "New Campus Tour",
+      date: "March 17, 2024",
+      image: "/images/WhatsApp Image 2025-04-27 at 13.30.27_27d4f065.jpg",
+      description: "Guided tour of our new facilities"
+    },
+    {
+      id: 6,
+      title: "New Campus Tour",
+      date: "March 17, 2024",
+      image: "/images/WhatsApp Image 2025-03-07 at 15.15.48_ae2039e8.jpg",
       description: "Guided tour of our new facilities"
     }
   ];

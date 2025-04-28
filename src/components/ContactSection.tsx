@@ -1,6 +1,14 @@
 
-import React from 'react';
+
 import { Button } from '@/components/ui/button';
+import { ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { RegistrationForm } from './RegistrationForm';
 
 const ContactSection = () => {
   return (
@@ -54,17 +62,26 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-            
-            <Button className="bg-nep-blue hover:bg-nep-blue-dark text-white">
-              Schedule an Appointment
-            </Button>
+            <div className="hidden md:flex space-x-4">
+                          <Sheet>
+                            <SheetTrigger asChild>
+                              <Button className="bg-nep-orange hover:bg-nep-orange-dark text-white">
+                                Register Now
+                              </Button>
+                            </SheetTrigger>
+                            <SheetContent side="right" className="w-full sm:max-w-2xl overflow-y-auto">
+                              <RegistrationForm />
+                            </SheetContent>
+                          </Sheet>
+                        </div>
           </div>
+          
           
           <div className="lg:w-1/2 reveal">
             <div className="relative">
               <div className="bg-white rounded-xl shadow-xl overflow-hidden">
                 <img 
-                  src="https://i.imgur.com/Lx9gEdb.jpg" 
+                  src="/images/IMG-20250409-WA0017.jpg" 
                   alt="NEP Helpdesk Booth" 
                   className="w-full h-72 object-cover object-center"
                 />
