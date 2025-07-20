@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -9,6 +8,7 @@ import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import Chatbot from '@/components/Chatbot'; // Import the Chatbot component
 
 const Index = () => {
   useEffect(() => {
@@ -49,6 +49,7 @@ const Index = () => {
       </main>
       <Footer />
       <ScrollToTop />
+      <Chatbot /> {/* Add the Chatbot component here */}
     </div>
   );
 };
