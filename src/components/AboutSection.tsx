@@ -1,8 +1,16 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription
+} from '@/components/ui/dialog';
 
 const AboutSection = () => {
+  const [isMissionOpen, setIsMissionOpen] = useState(false);
+
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto px-4">
@@ -19,10 +27,11 @@ const AboutSection = () => {
             Through our collective efforts, we strive to create a well-informed campus community that embraces multidisciplinary learning, holistic education, skill development, and research excellence, shaping the future of education in alignment with the vision of NEP 2020.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <Button className="bg-nep-purple hover:bg-nep-purple-dark text-white">
-                Join Our Team
-              </Button>
-              <Button variant="outline" className="border-nep-purple text-nep-purple hover:bg-nep-purple hover:text-white">
+              <Button 
+                variant="outline" 
+                className="border-nep-purple text-nep-purple hover:bg-nep-purple hover:text-white"
+                onClick={() => setIsMissionOpen(true)}
+              >
                 Learn Our Mission
               </Button>
             </div>
@@ -68,6 +77,62 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Mission Dialog */}
+      <Dialog open={isMissionOpen} onOpenChange={setIsMissionOpen}>
+        <DialogContent className="sm:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-nep-blue">Our Mission & Vision</DialogTitle>
+          </DialogHeader>
+          <DialogDescription>
+            <div className="space-y-4 mt-4 text-gray-700">
+              <div>
+                <h3 className="text-lg font-semibold text-nep-purple mb-2">Mission</h3>
+                <p>
+                  Our mission at NEP Saarthi is to facilitate a smooth transition to the NEP 2020 framework by empowering students with knowledge, resources, and support systems. We aim to bridge the gap between policy and implementation by creating awareness, fostering dialogue, and building capacity among the student community at Chitkara University.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-nep-purple mb-2">Vision</h3>
+                <p>
+                  We envision a transformed educational ecosystem where every student at Chitkara University understands, embraces, and benefits from the progressive reforms of NEP 2020, developing into holistic learners equipped with 21st-century skills and a global outlook while remaining rooted in Indian values and ethos.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-nep-purple mb-2">Core Values</h3>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><span className="font-medium">Student-Centered Approach:</span> Prioritizing student needs and perspectives in all our initiatives</li>
+                  <li><span className="font-medium">Collaboration:</span> Working closely with administration, faculty, and student bodies</li>
+                  <li><span className="font-medium">Innovation:</span> Exploring creative solutions to implementation challenges</li>
+                  <li><span className="font-medium">Inclusivity:</span> Ensuring all students, regardless of background, benefit from NEP reforms</li>
+                  <li><span className="font-medium">Excellence:</span> Maintaining high standards in all our awareness and training programs</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-nep-purple mb-2">Strategic Objectives</h3>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Increase NEP awareness among 100% of Chitkara University students</li>
+                  <li>Facilitate understanding of multidisciplinary options and credit-based systems</li>
+                  <li>Create peer support networks for adapting to new assessment frameworks</li>
+                  <li>Develop resources that explain NEP benefits in student-friendly language</li>
+                  <li>Support student initiatives aligned with NEP's vision of holistic education</li>
+                </ul>
+              </div>
+            </div>
+          </DialogDescription>
+          <div className="flex justify-end mt-6">
+            <Button 
+              className="bg-nep-purple hover:bg-nep-purple-dark text-white" 
+              onClick={() => setIsMissionOpen(false)}
+            >
+              Close
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

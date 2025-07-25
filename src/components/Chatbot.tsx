@@ -13,7 +13,7 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
-      text: 'Hello! I\'m the NEP Saarthi assistant. How can I help you today?',
+      text: 'Hello! 👋 I\'m the NEP Saarthi Assistant. I can answer your questions about NEP 2020 and Chitkara University\'s implementation. How can I help you today?',
       isUser: false,
     },
   ]);
@@ -30,6 +30,16 @@ const Chatbot: React.FC = () => {
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
+    
+    // Reset to initial state when opening chat
+    if (!isOpen) {
+      setMessages([{
+        id: 'welcome',
+        text: 'Hello! 👋 I\'m the NEP Saarthi Assistant. I can answer your questions about NEP 2020 and Chitkara University\'s implementation. How can I help you today?',
+        isUser: false,
+      }]);
+      setSuggestedQuestions(chatbotFAQs.slice(0, 3));
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,8 +47,24 @@ const Chatbot: React.FC = () => {
   };
 
   const findAnswer = (question: string) => {
-    // Simple matching - can be improved with more sophisticated matching
     const lowerQuestion = question.toLowerCase();
+    
+    // Handle greetings and common interactions
+    if (/^(hi|hello|hey|greetings|namaste).*/i.test(lowerQuestion)) {
+      return "Hello there! 👋 I'm the NEP Saarthi Assistant. I'm here to help with questions about the National Education Policy 2020 and Chitkara University's implementation. What would you like to know?";
+    }
+    
+    if (/^(how are you|how'?s it going|how do you do).*/i.test(lowerQuestion)) {
+      return "I'm functioning well, thank you! I'm here to provide information about NEP 2020 and Chitkara University. What specific information are you looking for?";
+    }
+    
+    if (/^(what can you do|help|how can you help).*/i.test(lowerQuestion)) {
+      return "I can provide information about the National Education Policy 2020, its implementation at Chitkara University, key features, benefits for students, academic programs, and more. Feel free to ask specific questions!";
+    }
+    
+    if (/thank.*(you|u)/i.test(lowerQuestion)) {
+      return "You're welcome! If you have more questions about NEP 2020 or Chitkara University, feel free to ask anytime.";
+    }
     
     // First try exact matches
     const exactMatch = chatbotFAQs.find(
@@ -47,16 +73,89 @@ const Chatbot: React.FC = () => {
     
     if (exactMatch) return exactMatch.answer;
     
-    // Then try keyword matching
-    const matchedFAQ = chatbotFAQs.find(faq => 
-      lowerQuestion.includes(faq.question.toLowerCase().slice(0, 10)) || 
-      faq.question.toLowerCase().includes(lowerQuestion.slice(0, 10))
-    );
+    // Then try keyword matching - improved version
+    const keywords = lowerQuestion.split(/\s+/)
+      .filter(word => word.length > 3)
+      .filter(word => !['what', 'when', 'where', 'which', 'how', 'does', 'will', 'about', 'that', 'this', 'these', 'those'].includes(word));
+
+    if (keywords.length > 0) {
+      // Score each FAQ based on keyword matches with weighted scoring
+      const scoredFAQs = chatbotFAQs.map(faq => {
+        const faqLower = faq.question.toLowerCase() + ' ' + faq.answer.toLowerCase().substring(0, 100);
+        let score = 0;
+        
+        // Check for exact question matches with high priority
+        if (faqLower.includes(lowerQuestion) || lowerQuestion.includes(faqLower.substring(0, 20))) {
+          score += 10;
+        }
+        
+        // Check for keyword matches
+        keywords.forEach(keyword => {
+          // Exact keyword match
+          if (faqLower.includes(` ${keyword} `)) {
+            score += 2;
+          } 
+          // Partial keyword match for longer keywords
+          else if (keyword.length > 5 && faqLower.includes(keyword)) {
+            score += 1;
+          }
+          
+          // Bonus points for keywords in the question part (higher relevance)
+          if (faq.question.toLowerCase().includes(keyword)) {
+            score += 3;
+          }
+          
+          // Context-specific keyword scoring
+          if ((keyword === 'chitkara' || keyword === 'university') && 
+              faq.question.toLowerCase().includes('chitkara')) {
+            score += 3;
+          }
+          
+          if ((keyword === 'saarthi' || keyword === 'nepsaarthi') && 
+              faq.question.toLowerCase().includes('saarthi')) {
+            score += 3;
+          }
+        });
+        
+        return { faq, score };
+      });
+      
+      // Find the FAQ with the highest score
+      const bestMatches = scoredFAQs
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3); // Get top 3 matches
     
-    if (matchedFAQ) return matchedFAQ.answer;
+      // Return if we have a good match (score threshold)
+      if (bestMatches[0] && bestMatches[0].score > 3) {
+        // Update suggested questions based on similar high-scoring matches
+        if (bestMatches.length > 1) {
+          const relatedQuestions = bestMatches
+            .slice(1)
+            .filter(match => match.score > 2)
+            .map(match => match.faq);
+        
+          if (relatedQuestions.length > 0) {
+            // Get a mix of related questions and general questions
+            const otherQuestions = chatbotFAQs
+              .filter(faq => !relatedQuestions.some(rq => rq.id === faq.id))
+              .slice(0, 3 - relatedQuestions.length);
+            
+            setSuggestedQuestions([...relatedQuestions, ...otherQuestions]);
+          }
+        }
+        
+        return bestMatches[0].faq.answer;
+      }
+    }
+    
+    // NEP-specific fallback for questions without direct matches
+    if (lowerQuestion.includes('nep') || lowerQuestion.includes('education') || 
+        lowerQuestion.includes('policy') || lowerQuestion.includes('chitkara')) {
+      return "That's a good question about the National Education Policy. While I don't have the specific answer, NEP 2020 is a comprehensive framework that aims to transform India's education system with flexible learning, multiple entry-exit options, and a focus on holistic development. Would you like to know about any specific aspect of NEP or its implementation at Chitkara University?";
+    }
     
     // Default response
-    return "I don't have specific information about that. Please ask another question about NEP 2020, Chitkara University, or NEP Saarthi.";
+    return "I don't have specific information about that. I'm specialized in answering questions about NEP 2020, Chitkara University's NEP implementation, academic programs, and related topics. Could you please ask something related to these areas?";
   };
 
   const handleSendMessage = () => {
@@ -84,9 +183,25 @@ const Chatbot: React.FC = () => {
       setMessages(prev => [...prev, botMessage]);
     }, 600);
 
-    // Reset input and suggested questions
+    // Reset input and update suggested questions based on context
     setInputValue('');
-    setSuggestedQuestions(chatbotFAQs.slice(0, 3)); // Reset suggested questions
+    
+    // Change suggested questions based on the user's query
+    if (inputValue.toLowerCase().includes('chitkara')) {
+      const chitkara_questions = chatbotFAQs
+        .filter(faq => faq.question.toLowerCase().includes('chitkara'))
+        .slice(0, 3);
+      setSuggestedQuestions(chitkara_questions.length ? chitkara_questions : chatbotFAQs.slice(0, 3));
+    } 
+    else if (inputValue.toLowerCase().includes('nep')) {
+      const nep_questions = chatbotFAQs
+        .filter(faq => faq.question.toLowerCase().includes('nep') && !faq.question.toLowerCase().includes('chitkara'))
+        .slice(0, 3);
+      setSuggestedQuestions(nep_questions.length ? nep_questions : chatbotFAQs.slice(0, 3));
+    }
+    else {
+      setSuggestedQuestions(chatbotFAQs.slice(0, 3));
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -96,9 +211,6 @@ const Chatbot: React.FC = () => {
   };
 
   const handleSuggestedQuestion = (question: string) => {
-    // Remove this line to prevent setting the input value
-    // setInputValue(question);
-    
     // Add user message
     const userMessage: Message = {
       id: `user-${Date.now()}`,
